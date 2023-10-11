@@ -5,7 +5,7 @@ const port = process.env.PORT || 3001;
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const http = require('http').Server(app);
-const io = require('socket.io')(http, {path:"/api-camara/socket.io" ,cors: { origins: ['*'] } });
+const io = require('socket.io')(http, {path:"/api-camara-nova-russas/socket.io" ,cors: { origins: ['*'] } });
 //const io = require('socket.io')(http, {cors: { origins: ['*'] } });
 
 var cors = require('cors');
@@ -49,10 +49,10 @@ const router = require('./src/routes');
 
 app.use(router);
 
-app.use('/api-camara/uploads', express.static('uploads'));
+app.use('/api-camara-nova-russas/uploads', express.static('uploads'));
 //app.use('/uploads', express.static('uploads'));
 
-app.use('/api-camara', router);
+app.use('/api-camara-nova-russas', router);
 //app.use('/', cors(), router);
 
 http.listen(port);
