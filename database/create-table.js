@@ -413,8 +413,10 @@ function createTable(conn) {
     /* CRIAR TABELA DE USUÁRIOS */
     const sqlUsersCamara = "CREATE TABLE IF NOT EXISTS users_camara (\n" +
         "ID int NOT NULL AUTO_INCREMENT,\n" +
+        "agentId varchar(150),\n" +
         "email varchar(50),\n" +
         "senha varchar(150),\n" +
+        "permission varchar(150),\n" +
         "PRIMARY KEY (ID)\n" +
         ");";
     conn.query(sqlUsersCamara, function (error, results, fields) {
@@ -642,11 +644,6 @@ function createTable(conn) {
         console.log('criou tabela servidores');
     });
 
-    const novaColunaUsersCamara = "ALTER TABLE users_camara ADD COLUMN agentId VARCHAR(150) AFTER ID";
-    conn.query(novaColunaUsersCamara, function (error, results, fields) {
-        if (error) return console.log(error);
-        console.log('criou nova coluna em users_camara');
-    });
 
     /* CRIAR TABELA DE CONFIGURAÇÔES */
     const sqlConfiguracoes = "CREATE TABLE IF NOT EXISTS configuracoes (\n" +
